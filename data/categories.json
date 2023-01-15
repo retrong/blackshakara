@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Clothing",
+    "image": "/assets/images/categories/clothing.jpg",
+    "subCategories": [
+      "T-Shirts",
+      "Native",
+      "Shirts",
+      "Shorts",
+      "Swimwear",
+      "Hoodies & Sweatshirts",
+      "Jackets & Coats",
+      "Jeans",
+      "Joggers",
+      "Jumpers & Cardigans",
+      "Loungewear",
+      "Polo shirts",
+      "Sportswear",
+      "Suits",
+      "Tracksuits & Joggers",
+      "Trousers & Chinos",
+      "Underwear"
+    ]
+  },
+  {
+    "name": "Shoes",
+    "image": "/assets/images/categories/shoes.jpg",
+    "subCategories": [
+      "Boots",
+      "Loafers",
+      "Sandals",
+      "Shoes",
+      "Sliders ",
+      "Slippers & Flip flops",
+      "Trainers"
+    ]
+  },
+  {
+    "name": "Accessories",
+    "image": "/assets/images/categories/accessories.jpg",
+    "subCategories": [
+      "Belts",
+      "Bags",
+      "Caps & Hats",
+      "Face coverings",
+      "Gloves",
+      "Jewellery",
+      "Sunglasses",
+      "Ties",
+      "Wallets"
+    ]
+  },
+  {
+    "name": "Sportswear",
+    "image": "/assets/images/categories/sportwear.jpg",
+    "subCategories": [
+      "Shorts",
+      "Tops",
+      "Sports Accessories",
+      "Hoodies & Sweatshirts",
+      "Joggers",
+      "Trousers & Tights"
+    ]
+  },
+  {
+    "name": "Face & Body",
+    "image": "/assets/images/categories/face_and_body.jpg",
+    "subCategories": [
+      "Body care",
+      "Hair care",
+      "Makeup",
+      "Shaving & Grooming",
+      "Skin care",
+      "Tools & Accessories",
+      "Skin care",
+      "Suncare & Tanning"
+    ]
+  }
+]

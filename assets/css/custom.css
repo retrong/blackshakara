@@ -1,0 +1,48 @@
+.error-tag {
+  width: 100%;
+  color: #c51244;
+  border: #c51244 1px solid;
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  text-transform: capitalize;
+}
+
+.success-tag {
+  width: 100%;
+  color: #12c557;
+  border: #12c557 1px solid;
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  text-transform: capitalize;
+}
+
+.tag {
+  min-width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 2rem;
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.smallTag {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
