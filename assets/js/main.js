@@ -1,4 +1,4 @@
-const API_URL = "https://blackshakara.herokuapp.com";
+const API_URL = "https://bundi.pythonanywhere.com";
 
 // Function To Create New Cookie
 function ecCreateCookie(cookieName, cookieValue, daysToExpire) {
@@ -45,7 +45,7 @@ function ecCheckCookie() {
 
     $("#bg-switcher-css").attr(
       "href",
-      "assets/css/backgrounds/" + bgID + ".css"
+      "assets/css/backgrounds/" + bgID + ".css",
     );
   }
 
@@ -88,7 +88,7 @@ function ecCheckCookie() {
         $("link[href='assets/css/responsive.css']").before(
           '<link rel="stylesheet" href="assets/css/skin-' +
             themeColor +
-            '.css" rel="stylesheet">'
+            '.css" rel="stylesheet">',
         );
       }
     }
@@ -125,7 +125,7 @@ function ecCheckCookie() {
           .map(
             (subCategory) => `<li>
           <a href="/category.html?main=${category.name}&sub=${subCategory}">${subCategory}</a>
-        </li>`
+        </li>`,
           )
           .join(" ")}
       </ul>`;
@@ -140,7 +140,7 @@ function ecCheckCookie() {
             .map(
               (subCategory) => `<li>
             <a href="/category.html?main=${category.name}&sub=${subCategory}">${subCategory}</a>
-          </li>`
+          </li>`,
             )
             .join(" ")}
         </ul>
@@ -164,7 +164,7 @@ function ecCheckCookie() {
                               ${subCategory}
                             </a>
                           </div>
-                        </li>`
+                        </li>`,
                       )
                       .join(" ")}
                   </ul>
@@ -182,7 +182,7 @@ function ecCheckCookie() {
       const category = $.parseHTML(generateMainNavItem(categories[i]));
       const mobileCategory = $.parseHTML(generateSideNavItem(categories[i]));
       const categoryFullList = $.parseHTML(
-        generateFullSideNavItem(categories[i])
+        generateFullSideNavItem(categories[i]),
       );
 
       // then append it to the navbar container element
@@ -193,7 +193,7 @@ function ecCheckCookie() {
 
     $(document).ready(function () {
       $(".ec-sidebar-block .ec-sb-block-content ul li ul").addClass(
-        "ec-cat-sub-dropdown"
+        "ec-cat-sub-dropdown",
       );
 
       $(".ec-sidebar-block .ec-sidebar-block-item").on("click", function () {
@@ -213,7 +213,7 @@ function ecCheckCookie() {
     $("#user-dropdown-mobile").append($.parseHTML(generateUserMenu(user)));
     $("#user-bottom-nav-menu").attr(
       "href",
-      user ? "user/user-profile.html" : "login.html"
+      user ? "user/user-profile.html" : "login.html",
     );
   };
 
@@ -306,7 +306,7 @@ function ecCheckCookie() {
       );
     }
     var els = (_elements = document.querySelectorAll(
-      "[data-animation]:not([data-animated])"
+      "[data-animation]:not([data-animated])",
     ));
     // Percorre o array de elementos, verifica se o elemento está na tela e inicia animação
     function checkElementsOnScreen(_elements) {
@@ -322,7 +322,7 @@ function ecCheckCookie() {
     // Atualiza a lista de elementos a serem animados
     function update() {
       _elements = document.querySelectorAll(
-        "[data-animation]:not([data-animated])"
+        "[data-animation]:not([data-animated])",
       );
       checkElementsOnScreen(_elements);
     }
@@ -335,7 +335,7 @@ function ecCheckCookie() {
     window.addEventListener(
       "resize",
       () => checkElementsOnScreen(_elements),
-      false
+      false,
     );
 
     // Retorna funcoes publicas
@@ -420,7 +420,7 @@ function ecCheckCookie() {
         {
           scrollTop: $("#" + target_ID).offset().top - 50,
         },
-        500
+        500,
       );
     });
   });
@@ -555,7 +555,7 @@ function ecCheckCookie() {
     var wish_product_count = $(".pro-gl-content").length;
     if (wish_product_count == 0) {
       $(".ec-wish-rightside, .wish-empt").html(
-        '<p class="emp-wishlist-msg">Your wishlist is empty!</p>'
+        '<p class="emp-wishlist-msg">Your wishlist is empty!</p>',
       );
     }
   });
@@ -565,7 +565,7 @@ function ecCheckCookie() {
     var comp_product_count = $(".pro-gl-content").length;
     if (comp_product_count == 0) {
       $(".ec-compare-rightside").html(
-        '<p class="emp-wishlist-msg">Your Compare list is empty!</p>'
+        '<p class="emp-wishlist-msg">Your Compare list is empty!</p>',
       );
     }
   });
@@ -671,7 +671,7 @@ function ecCheckCookie() {
       $(this).closest("li").remove();
       if (cart_product_count == 1) {
         $(".eccart-pro-items").html(
-          '<li><p class="emp-cart-msg">Your cart is empty!</p></li>'
+          '<li><p class="emp-cart-msg">Your cart is empty!</p></li>',
         );
       }
 
@@ -895,7 +895,7 @@ function ecCheckCookie() {
       $("link[href='assets/css/responsive.css']").before(
         '<link rel="stylesheet" href="assets/css/skin-' +
           dataValue +
-          '.css" rel="stylesheet">'
+          '.css" rel="stylesheet">',
       );
       // localStorage.setItem("colormode", dataValue);
       ecCreateCookie("themeColorCookie", dataValue, 1);
@@ -989,7 +989,7 @@ function ecCheckCookie() {
           document.documentElement.mozRequestFullScreen();
         } else if (document.documentElement.webkitRequestFullscreen) {
           document.documentElement.webkitRequestFullscreen(
-            Element.ALLOW_KEYBOARD_INPUT
+            Element.ALLOW_KEYBOARD_INPUT,
           );
         }
       } else {
@@ -1003,7 +1003,7 @@ function ecCheckCookie() {
           document.webkitExitFullscreen();
         }
       }
-    }
+    },
   );
 
   /*----------------------------- Menu Active -------------------------------- */
@@ -1021,7 +1021,7 @@ function ecCheckCookie() {
 
   /*----------------------------- Color Hover To Image Change -------------------------------- */
   var $ecproduct = $(
-    ".ec-pro-color, .ec-product-tab, .shop-pro-inner, .ec-new-product, .ec-releted-product, .ec-checkout-pro"
+    ".ec-pro-color, .ec-product-tab, .shop-pro-inner, .ec-new-product, .ec-releted-product, .ec-checkout-pro",
   ).find(".ec-opt-swatch");
 
   function initChangeImg($opt) {
@@ -1143,7 +1143,7 @@ function ecCheckCookie() {
           // Replace IMG with SVG
           $img.replaceWith($svg);
         },
-        "xml"
+        "xml",
       );
     });
   });
@@ -1207,11 +1207,11 @@ function ecCheckCookie() {
   /*----------------------------- Footer Toggle -------------------------------- */
   $(document).ready(function () {
     $("footer .footer-top .ec-footer-widget .ec-footer-links").addClass(
-      "ec-footer-dropdown"
+      "ec-footer-dropdown",
     );
 
     $(".ec-footer-heading").append(
-      "<div class='ec-heading-res'><i class='ecicon eci-angle-down'></i></div>"
+      "<div class='ec-heading-res'><i class='ecicon eci-angle-down'></i></div>",
     );
 
     $(".ec-footer-heading .ec-heading-res").click(function () {
@@ -1291,17 +1291,17 @@ function ecCheckCookie() {
   /*----------------------------- Sidebar Block Toggle -------------------------------- */
   $(document).ready(function () {
     $(
-      ".ec-shop-leftside .ec-sidebar-block .ec-sb-block-content,.ec-blogs-leftside .ec-sidebar-block .ec-sb-block-content,.ec-cart-rightside .ec-sidebar-block .ec-sb-block-content,.ec-checkout-rightside .ec-sidebar-block .ec-sb-block-content"
+      ".ec-shop-leftside .ec-sidebar-block .ec-sb-block-content,.ec-blogs-leftside .ec-sidebar-block .ec-sb-block-content,.ec-cart-rightside .ec-sidebar-block .ec-sb-block-content,.ec-checkout-rightside .ec-sidebar-block .ec-sb-block-content",
     ).addClass("ec-sidebar-dropdown");
 
     $(".ec-sidebar-title").append(
-      "<div class='ec-sidebar-res'><i class='ecicon eci-angle-down'></i></div>"
+      "<div class='ec-sidebar-res'><i class='ecicon eci-angle-down'></i></div>",
     );
 
     $(".ec-sidebar-title .ec-sidebar-res").click(function () {
       var $this = $(this)
         .closest(
-          ".ec-shop-leftside .ec-sidebar-block,.ec-blogs-leftside .ec-sidebar-block,.ec-cart-rightside .ec-sidebar-block,.ec-checkout-rightside .ec-sidebar-wrap"
+          ".ec-shop-leftside .ec-sidebar-block,.ec-blogs-leftside .ec-sidebar-block,.ec-cart-rightside .ec-sidebar-block,.ec-checkout-rightside .ec-sidebar-wrap",
         )
         .find(".ec-sidebar-dropdown");
       $this.slideToggle("slow");
@@ -1335,7 +1335,7 @@ function ecCheckCookie() {
   /*----------------------------- Faq Block Toggle -------------------------------- */
   $(document).ready(function () {
     $(".ec-faq-wrapper .ec-faq-block .ec-faq-content").addClass(
-      "ec-faq-dropdown"
+      "ec-faq-dropdown",
     );
 
     $(".ec-faq-block .ec-faq-title ").click(function () {
@@ -1350,7 +1350,7 @@ function ecCheckCookie() {
   /*----------------------------- Product page category Toggle -------------------------------- */
   $(document).ready(function () {
     $(".product_page .ec-sidebar-block .ec-sb-block-content ul li ul").addClass(
-      "ec-cat-sub-dropdown"
+      "ec-cat-sub-dropdown",
     );
 
     $(".product_page .ec-sidebar-block .ec-sidebar-block-item").click(
@@ -1360,7 +1360,7 @@ function ecCheckCookie() {
           .find(".ec-cat-sub-dropdown");
         $this.slideToggle("slow");
         $(".ec-cat-sub-dropdown").not($this).slideUp("slow");
-      }
+      },
     );
   });
 
@@ -1508,7 +1508,7 @@ function ecCheckCookie() {
   /*----------------------------- Single Product Color and Size Click to Active -------------------------------- */
   $(document).ready(function () {
     $(
-      ".single-pro-content .ec-pro-variation .ec-pro-variation-content li"
+      ".single-pro-content .ec-pro-variation .ec-pro-variation-content li",
     ).click(function () {
       $(this).addClass("active").siblings().removeClass("active");
     });
@@ -1553,7 +1553,7 @@ function ecCheckCookie() {
   /*----------------------------- Cart Page Qty Plus Minus Button  ------------------------------ */
   var CartQtyPlusMinus = $(".cart-qty-plus-minus");
   CartQtyPlusMinus.append(
-    '<div class="ec_cart_qtybtn"><div class="inc ec_qtybtn">+</div><div class="dec ec_qtybtn">-</div></div>'
+    '<div class="ec_cart_qtybtn"><div class="inc ec_qtybtn">+</div><div class="dec ec_qtybtn">-</div></div>',
   );
   $(".cart-qty-plus-minus .ec_cart_qtybtn .ec_qtybtn").on("click", function () {
     var $cartqtybutton = $(this);
@@ -1629,7 +1629,7 @@ function ecCheckCookie() {
       //checking for device type
       if (
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
+          navigator.userAgent,
         )
       ) {
         // redirect link for mobile WhatsApp chat awc
@@ -1638,7 +1638,7 @@ function ecCheckCookie() {
         // redirect link for WhatsApp chat in website
         window.open(
           "https://web.WhatsApp.com/send?phone=" + number + "&text=" + message,
-          "-blank"
+          "-blank",
         );
       }
     });
@@ -1669,7 +1669,7 @@ function ecCheckCookie() {
         closeDuration: 200,
         rotate: true,
       },
-      options
+      options,
     );
 
     //Open panel animation
@@ -1679,7 +1679,7 @@ function ecCheckCookie() {
           opacity: "toggle",
           height: "toggle",
         },
-        settings.openDuration
+        settings.openDuration,
       );
     };
 
@@ -1690,7 +1690,7 @@ function ecCheckCookie() {
           opacity: "hide",
           height: "hide",
         },
-        settings.closeDuration
+        settings.closeDuration,
       );
     };
 
@@ -1817,7 +1817,7 @@ function ecCheckCookie() {
 
     $("#bg-switcher-css").attr(
       "href",
-      "assets/css/backgrounds/" + bgID + ".css"
+      "assets/css/backgrounds/" + bgID + ".css",
     );
 
     var bgIDClass = bgID + "||" + bgClass;
@@ -1902,7 +1902,7 @@ const getWishlistItems = async () => {
     if (rawResponse.status !== 200) {
       alert(
         jsonResponse.message ||
-          "An error has occurred. Please report this so we can investigate."
+          "An error has occurred. Please report this so we can investigate.",
       );
 
       return;
@@ -1946,7 +1946,7 @@ const getCartItems = async () => {
     if (rawResponse.status !== 200) {
       alert(
         jsonResponse.message ||
-          "An error has occurred. Please report this so we can investigate."
+          "An error has occurred. Please report this so we can investigate.",
       );
 
       return;
@@ -1968,7 +1968,7 @@ const getCartItems = async () => {
 
     if (totalQuantity < 0) {
       $("#side-cart-items").append(
-        $parseHTML(`<li><p class="emp-cart-msg">Your cart is empty!</p></li>`)
+        $parseHTML(`<li><p class="emp-cart-msg">Your cart is empty!</p></li>`),
       );
     }
 
@@ -2006,7 +2006,7 @@ const addToWishlist = async (slug, type) => {
             "Content-Type": "application/json",
             authorization: token,
           },
-        }
+        },
       );
     } else {
       rawResponse = await fetch(
@@ -2018,7 +2018,7 @@ const addToWishlist = async (slug, type) => {
             "Content-Type": "application/json",
             authorization: token,
           },
-        }
+        },
       );
     }
 
@@ -2027,7 +2027,7 @@ const addToWishlist = async (slug, type) => {
     if (rawResponse.status !== 200) {
       alert(
         jsonResponse.message ||
-          "An error has occurred. Please report this so we can investigate."
+          "An error has occurred. Please report this so we can investigate.",
       );
 
       return;
@@ -2066,7 +2066,7 @@ const addToCart = async (slug, quantity, type) => {
             authorization: token,
           },
           body: JSON.stringify({ quantity }),
-        }
+        },
       );
     } else {
       rawResponse = await fetch(
@@ -2079,7 +2079,7 @@ const addToCart = async (slug, quantity, type) => {
             authorization: token,
           },
           body: JSON.stringify({ quantity }),
-        }
+        },
       );
     }
 
@@ -2088,7 +2088,7 @@ const addToCart = async (slug, quantity, type) => {
     if (rawResponse.status !== 200) {
       alert(
         jsonResponse.message ||
-          "An error has occurred. Please report this so we can investigate."
+          "An error has occurred. Please report this so we can investigate.",
       );
 
       return;
@@ -2181,7 +2181,7 @@ const generateProductElement = (product) => {
                 class="ec-opt-sz uppercase"
                 >${size}</a
               >
-            </li>`
+            </li>`,
                     )
                     .join(" ")
                 : ""
