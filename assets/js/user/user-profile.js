@@ -20,12 +20,12 @@ const loadProfile = async () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: token,
+        Authorization: token,
       },
     });
 
     if (rawResponse.status !== 302) {
-      alert("Profile could not be loaded");
+      $.notify("Profile could not be loaded", "error");
 
       return;
     }
@@ -36,7 +36,7 @@ const loadProfile = async () => {
 
     $("#user-name").html(`${userProfile.firstname} ${userProfile.lastname}`);
     $("#user-greeting").html(
-      `${userProfile.firstname} ${userProfile.lastname}`
+      `${userProfile.firstname} ${userProfile.lastname}`,
     );
     $("#user-email").html(userProfile.email);
     $("#user-phone").html(userProfile.phone_number);
@@ -91,16 +91,22 @@ const submitUserProfile = async (event) => {
     }
     const token = userObj.token;
 
-    if (!profile_pic) {
-      alert("Please select a profile picture");
+    // if (!profile_pic) {
+    //   alert("Please select a profile picture");
 
-      return;
-    }
+    //   return;
+    // }
 
     $("#edit-submit-button").html("Updating");
 
     const formData = new FormData(event.target);
     const formValues = Object.fromEntries(formData);
+
+    console.log({
+      ...formValues,
+      profile_pic,
+      auxiliary_phone_number: "",
+    });
 
     const rawResponse = await fetch(`${API_URL}/user/dashboard/`, {
       mode: "cors",
@@ -108,11 +114,12 @@ const submitUserProfile = async (event) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: token,
+        Authorization: token,
       },
       body: JSON.stringify({
         ...formValues,
         profile_pic,
+        sex: "",
         auxiliary_phone_number: "",
       }),
     });
@@ -120,13 +127,17 @@ const submitUserProfile = async (event) => {
     const jsonResponse = await rawResponse.json();
 
     if (rawResponse.status !== 201) {
-      alert(
-        jsonResponse.message ||
-          "An error has occurred. Please report this so we can investigate"
+      $.notify(
+        jsonResponse.detail ||
+          "An error has occurred. Please report this so we can investigate.",
+        "error",
       );
     }
   } catch (error) {
-    alert("An error has occurred. Please report this so we can investigate");
+    $.notify(
+      "An error has occurred. Please report this so we can investigate.",
+      "error",
+    );
   } finally {
     $("#edit-submit-button").html("Update");
     loadProfile();

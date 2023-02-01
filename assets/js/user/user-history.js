@@ -19,14 +19,14 @@ const loadHistory = async () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: token,
+        Authorization: token,
       },
     });
 
     console.log("Here");
 
     if (rawResponse.status !== 200) {
-      alert("Purchase history could not be loaded");
+      $.notify("Purchase history could not be loaded", "error");
 
       return;
     }
@@ -46,8 +46,8 @@ const loadHistory = async () => {
     if (totalQuantity <= 0) {
       $("#user-history-table-container").append(
         $.parseHTML(
-          `<p class="emp-cart-msg smallTag" style="column-span: all;">No products purchased yet!</p>`
-        )
+          `<p class="emp-cart-msg smallTag" style="column-span: all;">No products purchased yet!</p>`,
+        ),
       );
     }
 

@@ -54,7 +54,7 @@ const loadProduct = async () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     if (rawResponse.status !== 200) {
@@ -71,7 +71,7 @@ const loadProduct = async () => {
     $("#product-title").html(productItem.title);
     $("#product-name").html(productItem.name);
     $("#product-description").html(productItem.description);
-    $("#product-price").html(`₦${productItem.price}`);
+    $("#product-price").html(`₦${currencyFormatter.format(productItem.price)}`);
     $("#product-in-stock").html(productItem.quantity);
 
     inStock = productItem.quantity;
@@ -79,14 +79,14 @@ const loadProduct = async () => {
     const relatedProduct = jsonResponse.similar_products;
     relatedProduct.forEach((product) => {
       $("#related-product-container").append(
-        $.parseHTML(generateProductElement(product))
+        $.parseHTML(generateProductElement(product)),
       );
     });
 
     let rating = Math.round(productItem.rating || 0);
 
     $("#product-rating").append(
-      $.parseHTML(`<span>${productItem.rating || 0}</span>&nbsp;&nbsp;`)
+      $.parseHTML(`<span>${productItem.rating || 0}</span>&nbsp;&nbsp;`),
     );
 
     Object.keys(productItem)
@@ -151,7 +151,7 @@ $("#add-to-cart-btn").on("click", async function () {
   const quantity = Number($("#quantity-input").val());
 
   if (quantity > inStock) {
-    alert("Not enough item in stock");
+    $.notify("Not enough items in stock", "warn");
 
     return;
   }

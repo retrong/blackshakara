@@ -218,10 +218,13 @@ function ecCheckCookie() {
   };
 
   $(window).load(async function () {
+    const user = localStorage.getItem("user");
     try {
       await displayNavCategories();
-      await getWishlistItems();
-      await getCartItems();
+      if (user) {
+        await getWishlistItems();
+        await getCartItems();
+      }
       ResponsiveMobileekkaMenu();
       displayUserMenu();
     } catch (err) {
@@ -1878,6 +1881,8 @@ function ecCheckCookie() {
   });
 })(jQuery);
 
+const currencyFormatter = new Intl.NumberFormat();
+
 const getWishlistItems = async () => {
   const userObj = JSON.parse(localStorage.getItem("user"));
 
@@ -1893,16 +1898,17 @@ const getWishlistItems = async () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: token,
+        Authorization: token,
       },
     });
 
     const jsonResponse = await rawResponse.json();
 
     if (rawResponse.status !== 200) {
-      alert(
-        jsonResponse.message ||
+      $.notify(
+        jsonResponse.detail ||
           "An error has occurred. Please report this so we can investigate.",
+        "error",
       );
 
       return;
@@ -1937,16 +1943,17 @@ const getCartItems = async () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: token,
+        Authorization: token,
       },
     });
 
     const jsonResponse = await rawResponse.json();
 
     if (rawResponse.status !== 200) {
-      alert(
-        jsonResponse.message ||
+      $.notify(
+        jsonResponse.detail ||
           "An error has occurred. Please report this so we can investigate.",
+        "error",
       );
 
       return;
@@ -2004,7 +2011,7 @@ const addToWishlist = async (slug, type) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            authorization: token,
+            Authorization: token,
           },
         },
       );
@@ -2016,7 +2023,7 @@ const addToWishlist = async (slug, type) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            authorization: token,
+            Authorization: token,
           },
         },
       );
@@ -2025,19 +2032,23 @@ const addToWishlist = async (slug, type) => {
     const jsonResponse = await rawResponse.json();
 
     if (rawResponse.status !== 200) {
-      alert(
-        jsonResponse.message ||
+      $.notify(
+        jsonResponse.detail ||
           "An error has occurred. Please report this so we can investigate.",
+        "error",
       );
 
       return;
     }
 
-    alert("Product has been added to wishlist");
+    $.notify("Product has been added to wishlist", "success");
 
     getWishlistItems();
   } catch (error) {
-    alert("An error has occurred. Please report this so we can investigate.");
+    $.notify(
+      "An error has occurred. Please report this so we can investigate.",
+      "error",
+    );
   }
 };
 
@@ -2063,7 +2074,7 @@ const addToCart = async (slug, quantity, type) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            authorization: token,
+            Authorization: token,
           },
           body: JSON.stringify({ quantity }),
         },
@@ -2076,7 +2087,7 @@ const addToCart = async (slug, quantity, type) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            authorization: token,
+            Authorization: token,
           },
           body: JSON.stringify({ quantity }),
         },
@@ -2086,19 +2097,23 @@ const addToCart = async (slug, quantity, type) => {
     const jsonResponse = await rawResponse.json();
 
     if (rawResponse.status !== 200) {
-      alert(
-        jsonResponse.message ||
+      $.notify(
+        jsonResponse.detail ||
           "An error has occurred. Please report this so we can investigate.",
+        "error",
       );
 
       return;
     }
 
-    alert("Product has been added to cart");
+    $.notify("Product has been added to cart", "success");
 
     getCartItems();
   } catch (error) {
-    alert("An error has occurred. Please report this so we can investigate.");
+    $.notify(
+      "An error has occurred. Please report this so we can investigate.",
+      "error",
+    );
   }
 };
 
@@ -2166,7 +2181,9 @@ const generateProductElement = (product) => {
         ${product.description}
       </div>
       <span class="ec-price">
-        <span class="new-price" id="product-price">₦${product.price}</span>
+        <span class="new-price" id="product-price">₦${currencyFormatter.format(
+          product.price,
+        )}</span>
       </span>
       <div class="ec-pro-option">
         <div class="ec-pro-size">
@@ -2231,7 +2248,9 @@ const generateSideCartItems = (product) => {
       <a href="product.html?item=${product.slug}" class="cart_pro_title"
         >${product.title}</a
       >
-      <span class="cart-price"><span>₦${product.price}</span> x ${product.quantity}</span>
+      <span class="cart-price"><span>₦${currencyFormatter.format(
+        product.price,
+      )}</span> x ${product.quantity}</span>
       <a href="removeItemFromCart(${product.slug})" class="remove">×</a>
     </div>
   </li>`;

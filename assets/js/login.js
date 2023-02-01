@@ -31,7 +31,7 @@ const submitLoginForm = async (event) => {
     if (rawResponse.status !== 200) {
       tag.classList.add("error-tag");
       tag.innerHTML =
-        jsonResponse.message ||
+        jsonResponse.detail ||
         "An error has occurred. Please report this so we can investigate";
 
       return;
@@ -49,7 +49,7 @@ const submitLoginForm = async (event) => {
         username: jsonResponse.username,
         email: jsonResponse.email,
         token: jsonResponse.token,
-      })
+      }),
     );
 
     tag.innerHTML = "Login in successful";

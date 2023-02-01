@@ -64,7 +64,7 @@ const submitRegisterForm = async (event) => {
     if (rawResponse.status !== 201) {
       tag.classList.add("error-tag");
       tag.innerHTML =
-        jsonResponse.message ||
+        jsonResponse.detail ||
         "An error has occurred. Please report this so we can investigate";
 
       return;

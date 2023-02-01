@@ -19764,6 +19764,7 @@ body.ec-open:before {
   width: 100%;
   height: 80vh;
   position: relative;
+  background: attr(data-bg-image);
 }
 
 .swiper-slide {

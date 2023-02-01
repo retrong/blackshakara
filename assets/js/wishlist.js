@@ -22,7 +22,7 @@ const fetchWishlistItems = async () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: token,
+        Authorization: token,
       },
     });
 
@@ -32,8 +32,8 @@ const fetchWishlistItems = async () => {
       $("#tag").addClass("tag");
 
       $("#tag").html(
-        jsonResponse.message ||
-          "An error has occurred. Please report this so we can investigate"
+        jsonResponse.detail ||
+          "An error has occurred. Please report this so we can investigate",
       );
 
       return;
@@ -47,19 +47,19 @@ const fetchWishlistItems = async () => {
     if (products.length < 0) {
       $("#tag").addClass("tag");
 
-      $("#tag").html(jsonResponse.message || "Oops, no products found!");
+      $("#tag").html(jsonResponse.detail || "Oops, no products found!");
 
       return;
     }
 
     for (let i = 0; i < products.length; i++) {
       $("#products-container").append(
-        $.parseHTML(generateProductElement(products[i]))
+        $.parseHTML(generateProductElement(products[i])),
       );
     }
   } catch (err) {
     $("#tag").html(
-      "An error has occurred. Please report this so we can investigate"
+      "An error has occurred. Please report this so we can investigate",
     );
   } finally {
     $("#ec-overlay").fadeOut("slow");

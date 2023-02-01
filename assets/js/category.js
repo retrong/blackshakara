@@ -16,7 +16,7 @@ const fetchProductsByCategory = async () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     const jsonResponse = await rawResponse.json();
@@ -24,7 +24,7 @@ const fetchProductsByCategory = async () => {
     if (rawResponse.status !== 200) {
       tag.classList.add("tag");
       tag.innerHTML =
-        jsonResponse.message ||
+        jsonResponse.detail ||
         "An error has occurred. Please report this so we can investigate";
 
       return;
@@ -32,13 +32,13 @@ const fetchProductsByCategory = async () => {
 
     if (jsonResponse.items.length < 1) {
       tag.classList.add("tag");
-      tag.innerHTML = jsonResponse.message || "Oops, no products found!";
+      tag.innerHTML = jsonResponse.detail || "Oops, no products found!";
       $("#num-items-shown").addClass("d-none");
     }
 
     for (let i = 0; i < jsonResponse.items.length; i++) {
       $("#products-container").append(
-        $.parseHTML(generateProductElement(jsonResponse.items[i]))
+        $.parseHTML(generateProductElement(jsonResponse.items[i])),
       );
     }
 
@@ -59,7 +59,7 @@ const fetchProductsByCategory = async () => {
     $("#num-items-shown").html(
       `Showing ${startItems} - ${
         startItems + (jsonResponse.items.length || 1) - 1
-      } of ${jsonResponse.total_items} item(s)`
+      } of ${jsonResponse.total_items} item(s)`,
     );
   } catch (err) {
     tag.classList.add("tag");

@@ -1,21 +1,39 @@
 const generateCarouselSlide = (product) => {
-  return `<div class="ec-slide-item swiper-slide d-flex">
+  return `<div class="ec-slide-item swiper-slide d-flex position-relative">
       <div class="container align-self-center">
         <div class="row">
-          <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+          <div  class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
             <div class="ec-slide-content slider-animation">
               <h1 class="ec-slide-title">${product.title}</h1>
               <h2 class="ec-slide-stitle">${product.name}</h2>
-              <p>
+              <p style="color: red;">
                 NEW SALE!!!
               </p>
-              <a href="/product.html?item=${product.id}" class="btn btn-lg btn-secondary">
+              <a href="/product.html?item=${product.slug}" class="btn btn-lg btn-secondary">
                 Order Now
               </a>
             </div>
           </div>
         </div>
       </div>
+      <div
+        style="
+          background-image: url('${product.image}'); 
+          position: absolute; 
+          width: 100%; 
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+        " 
+      />
+      <div
+        style="
+          position: absolute; 
+          width: 100%; 
+          height: 100%; 
+          background-color: rgba(255,255,255,0.15);
+        " 
+      />
     </div>`;
 };
 
