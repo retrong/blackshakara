@@ -31,7 +31,7 @@ const submitLoginForm = async (event) => {
     if (rawResponse.status !== 200) {
       tag.classList.add("error-tag");
       tag.innerHTML =
-        jsonResponse.detail ||
+        jsonResponse.message ||
         "An error has occurred. Please report this so we can investigate";
 
       return;
