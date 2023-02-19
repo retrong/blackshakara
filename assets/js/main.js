@@ -1,5 +1,7 @@
 const API_URL = "https://bundi.pythonanywhere.com";
 
+let wishlistItems = {};
+
 // Function To Create New Cookie
 function ecCreateCookie(cookieName, cookieValue, daysToExpire) {
   var date = new Date();
@@ -1917,6 +1919,32 @@ const getWishlistItems = async () => {
     const total =
       (jsonResponse.products.length || 0) + (jsonResponse.bespoke.length || 0);
 
+    [...jsonResponse.products, ...jsonResponse.bespoke].forEach(
+      (wishlistItem) => {
+        wishlistItems[wishlistItem.id] = wishlistItem;
+      },
+    );
+
+    const wishlistButtons = document.querySelectorAll(".wishlist_icon");
+
+    for (element in wishlistButtons) {
+      try {
+        const productId =
+          wishlistButtons[element].getAttribute("data-product-id");
+
+        console.log(productId);
+
+        console.log(wishlistItems[productId]);
+
+        if (wishlistItems[productId]) {
+          console.log("Got here");
+          wishlistButtons[element].classList.add("added");
+        }
+      } catch (error) {
+        continue;
+      }
+    }
+
     $("#wishlist-counter").text(total);
     $("#wishlist-mobile-counter").text(total);
     $("#wishlist-mobile-footer-counter").text(total);
@@ -1983,13 +2011,14 @@ const getCartItems = async () => {
     $("#cart-mobile-counter").text(totalQuantity);
     $("#cart-mobile-footer-counter").text(totalQuantity);
 
-    $("#side-cart-total").text(`₦${totalPrice}`);
+    $("#side-cart-total").text(`₦${currencyFormatter.format(totalPrice)}`);
   } catch (error) {
     console.log(error);
   }
 };
 
 const addToWishlist = async (slug, type) => {
+  console.log(this);
   const userObj = JSON.parse(localStorage.getItem("user"));
   try {
     if (!userObj) {
@@ -2164,8 +2193,10 @@ const generateProductElement = (product) => {
             product.slug
           }','${product.type}')"
             ><img
+              data-product-id="${product.id}"
               src="assets/images/icons/wishlist.svg"
-              class="svg_img pro_svg"
+              class="svg_img pro_svg wishlist_icon"
+
               alt=""
           /></a>
         </div>

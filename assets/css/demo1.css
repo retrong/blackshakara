@@ -20679,6 +20679,14 @@ button.btn-close.qty_close {
   width: auto;
 }
 
+.svg_img.pro_svg:hover {
+  fill: #3474d4;
+}
+
+.svg_img.pro_svg.added {
+  fill: #3474d4;
+}
+
 a.quickview .svg_img.pro_svg {
   height: 22px;
 }

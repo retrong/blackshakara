@@ -37,12 +37,6 @@ const submitLoginForm = async (event) => {
       return;
     }
 
-    console.log({
-      username: jsonResponse.username,
-      email: jsonResponse.email,
-      token: jsonResponse.token,
-    });
-
     localStorage.setItem(
       "user",
       JSON.stringify({
